@@ -1,8 +1,9 @@
-import 'package:bmi1/Screens/LoginScreen.dart';
+import 'package:bmi1/Authintication/UI/LoginScreen.dart';
 import 'package:bmi1/Services/Router.dart';
 import 'package:flutter/material.dart';
 
 class SplachScreen extends StatelessWidget {
+  static final routeName='splach';
   SplachScreen();
 
   @override
