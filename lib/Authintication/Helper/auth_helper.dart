@@ -36,7 +36,6 @@ class Auth_helper {
     try {
       UserCredential userCredential = await firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      vereifyEmail();
 
     } on FirebaseAuthException catch (e) {
       print(e.code);
@@ -67,9 +66,6 @@ class Auth_helper {
     await firebaseAuth.signOut();
   }
 
-  bool checkEmailVerification() {
-    return firebaseAuth.currentUser?.emailVerified ?? false;
-  }
 
   Future<User> getCurrentUser() async {
     try {

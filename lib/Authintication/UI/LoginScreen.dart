@@ -1,11 +1,10 @@
 import 'package:bmi1/Provider/AuthProvider.dart';
-import 'package:bmi1/Screens/CompleteScreen.dart';
 import 'package:bmi1/Authintication/UI/RegisterScreen.dart';
 import 'package:bmi1/Services/Router.dart';
-import 'package:bmi1/Widgets/MainText.dart';
-import 'package:bmi1/Widgets/MyButton.dart';
-import 'package:bmi1/Widgets/MyTextField.dart';
-import 'package:bmi1/Widgets/SubText.dart';
+import 'package:bmi1/Widgets/Text/MainText.dart';
+import 'package:bmi1/Widgets/Buttons/MyButton.dart';
+import 'package:bmi1/Widgets/Text/SubText.dart';
+import 'package:bmi1/Widgets/TextFields/MyTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

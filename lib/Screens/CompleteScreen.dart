@@ -1,8 +1,9 @@
 import 'package:bmi1/Provider/AuthProvider.dart';
-import 'package:bmi1/Widgets/LengthRow.dart';
-import 'package:bmi1/Widgets/MainText.dart';
-import 'package:bmi1/Widgets/MyButton.dart';
-import 'package:bmi1/Widgets/WeightRow.dart';
+import 'package:bmi1/Widgets/Rows/DateTimeWidget.dart';
+import 'package:bmi1/Widgets/Rows/LengthRow.dart';
+import 'package:bmi1/Widgets/Rows/WeightRow.dart';
+import 'package:bmi1/Widgets/Text/MainText.dart';
+import 'package:bmi1/Widgets/Buttons/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -110,35 +111,7 @@ class CompleteScreen extends StatelessWidget {
                       SizedBox(
                         height: 30,
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 35,
-                          ),
-                          Text(
-                            'Date Of Birth',
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Container(
-                              width: 170,
-                              height: 35,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.blue)),
-                              child: TextField(
-                                controller: provider.dateBirth,
-                                style: TextStyle(color: Colors.blue),
-                                keyboardType: TextInputType.number,
-                                decoration:
-                                    InputDecoration(border: InputBorder.none),
-                              ))
-                        ],
-                      ),
+                      DateTimeWidget(label: 'Date Of Birth',textEditingController: provider.dateBirth,),
                       SizedBox(
                         height: 70,
                       ),

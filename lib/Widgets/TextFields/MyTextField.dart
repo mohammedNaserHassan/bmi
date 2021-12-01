@@ -10,8 +10,8 @@ class MyTextField extends StatelessWidget {
 
   MyTextField(
       {this.label,
-      this.obscure = false,
-      this.textInputType = TextInputType.text,this.textEditingController});
+        this.obscure = false,
+        this.textInputType = TextInputType.text,this.textEditingController});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class MyTextField extends StatelessWidget {
               hintText: label,
               suffixIcon: obscure
                   ? IconButton(
-                      onPressed: () {
-                        provider.setEye();
-                      },
-                      icon: Icon(provider.isEye?Icons.visibility_off_outlined:Icons.remove_red_eye_outlined,size: 20,),
-                    )
+                onPressed: () {
+                  provider.setEye();
+                },
+                icon: Icon(provider.isEye?Icons.visibility_off_outlined:Icons.remove_red_eye_outlined,size: 20,),
+              )
                   : null),
         ),
       ),

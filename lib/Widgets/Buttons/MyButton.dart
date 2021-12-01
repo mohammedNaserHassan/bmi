@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   String label;
   Function function;
-  MyButton({this.label,this.function});
+  double margin;
+  MyButton({this.label,this.function,this.margin=30});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class MyButton extends StatelessWidget {
       child: Container(
         child: Center(
             child: Text(
-             label,
+              label,
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -19,11 +20,11 @@ class MyButton extends StatelessWidget {
             )),
         decoration: BoxDecoration(
             color: Colors.blue,
-          borderRadius: BorderRadius.circular(10)
+            borderRadius: BorderRadius.circular(10)
         ),
         height: 50,
         width: double.infinity,
-        margin: EdgeInsets.all(30),
+        margin: EdgeInsets.all(margin),
       ),
     );
   }

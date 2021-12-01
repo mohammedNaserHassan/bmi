@@ -1,6 +1,12 @@
-class RegisterRequest {
+
+class RegisterRequest{
   String name,email, password, id,rePassword;
-  String gender,weight,length,dateOfBirth;
+  List<Map<String,dynamic>> foods;
+  List<Map<String,dynamic>> states;
+  String gender,weight,length,dateOfBirth,state;
+  String nameFood ,category,photo,time;
+  double calory;
+  String idFood;
 
   RegisterRequest(
       {this.name,
@@ -11,7 +17,9 @@ class RegisterRequest {
         this.length,
         this.weight,
         this.gender,
-        this.dateOfBirth
+        this.dateOfBirth,
+        this.foods,
+        this.states,
       });
 
   toMap() { 
@@ -25,18 +33,40 @@ class RegisterRequest {
       'length': this.length,
       'weight': this.weight,
       'dateOfBirth': this.dateOfBirth,
+      'states':this.states,
+      'foods':this.foods
     };
   }
 
-  RegisterRequest.fromMap(Map map) {
-    this.id = map['id'];
-    this.email = map['email'];
-    this.rePassword = map['rePassword'];
-    this.password = map['password'];
-    this.name = map['name'];
-    this.gender = map['gender'];
-    this.length = map['length'];
-    this.weight = map['weight'];
-    this.dateOfBirth = map['dateOfBirth'];
+  RegisterRequest.fromMap(Map<String,dynamic> map) {
+    dateOfBirth = map['dateOfBirth'];
+    email = map['email'];
+    map['foods'].forEach((element){
+      if(foods!=null)
+      foods.add({
+        'name': this.nameFood,
+        'category': this.category,
+        'calory': this.calory,
+        'photo': this.photo,
+        'id':this.idFood
+      });
+    });
+    gender = map['gender'];
+    id = map['id'];
+    length = map['length'];
+    name = map['name'];
+    password = map['password'];
+    rePassword = map['rePassword'];
+    map['states'].forEach((element) {
+      if(states!=null)
+      states.add({
+        'lengthPerson': length,
+        'weightPerson': weight,
+        'dateBirth': dateOfBirth,
+        'time':time
+      });
+    });
+    weight = map['weight'];
+
   }
 }

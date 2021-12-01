@@ -9,6 +9,11 @@ class AppRouter{
   gotoPagewithReplacment(String routeName){
     navkey.currentState.pushReplacementNamed(routeName);
   }
+
+  gotoPage(String routeName){
+    navkey.currentState.pushNamed(routeName);
+  }
+
   goReplacement(Widget widget){
     navkey.currentState.pushReplacement(MaterialPageRoute(builder: (x)=>widget));
   }

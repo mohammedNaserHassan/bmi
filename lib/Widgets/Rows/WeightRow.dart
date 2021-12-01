@@ -42,8 +42,8 @@ class WeightRow extends StatelessWidget {
               style: TextStyle(color: Colors.blue),
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-      border: InputBorder.none,
-      hoverColor: Colors.blue,
+                border: InputBorder.none,
+                hoverColor: Colors.blue,
               ),
             ),
           ),

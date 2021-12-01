@@ -1,13 +1,17 @@
 import 'package:bmi1/Authintication/UI/LoginScreen.dart';
 import 'package:bmi1/Authintication/UI/RegisterScreen.dart';
 import 'package:bmi1/Screens/CompleteScreen.dart';
+import 'package:bmi1/Screens/FoodList.dart';
 import 'package:bmi1/Screens/MainScreen.dart';
+import 'package:bmi1/Screens/NewFood.dart';
+import 'package:bmi1/Screens/NewRecord.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'AppFire.dart';
 import 'Provider/AuthProvider.dart';
 import 'Screens/SplachScreen.dart';
+import 'Screens/ُEditFood.dart';
 import 'Services/Router.dart';
 
 void main() {
@@ -31,6 +35,10 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (_) => LoginScreen(),
         RegisterScreen.routeName: (_) => RegisterScreen(),
         MainScreen.routeName: (_) => MainScreen(),
+        NewRecord.routeName: (_) => NewRecord(),
+        NewFood.routeName: (_) => NewFood(),
+        EditFoof.routeName: (_) => EditFoof(),
+        FoodList.routeName: (_) => FoodList(),
       },
       home: App(),
     );

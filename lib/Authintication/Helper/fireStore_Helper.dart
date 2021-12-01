@@ -21,27 +21,11 @@ class fireStore_Helper {
   Future<RegisterRequest> getUserFromFirestore() async {
     String userId = Auth_helper.auth_helper.getUserId();
     DocumentSnapshot documentSnapshot =
-        await firebaseFirestore.collection('Users').doc(userId).get();
-    //  print(documentSnapshot.data());
+    await firebaseFirestore.collection('Users').doc(userId).get();
+print(documentSnapshot.data());
     return RegisterRequest.fromMap(documentSnapshot.data());
   }
-
 ////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-
-  ////////////////////////GetAll
-
-  Future<List<RegisterRequest>> getAllUsersFromFirestore() async {
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await firebaseFirestore.collection('Users').get();
-    List<QueryDocumentSnapshot<Map<String, dynamic>>> docs = querySnapshot.docs;
-    List<RegisterRequest> users =
-        docs.map((e) => RegisterRequest.fromMap(e.data())).toList();
-    String id = users.first.id;
-    print(users.length);
-    return users;
-  }
 
 /////////////////////Update Profile
 
@@ -52,4 +36,6 @@ class fireStore_Helper {
         .update(userModel.toMap());
   }
 ////////////////////////////////////////////////////////////////////////////////////
+
+
 }
