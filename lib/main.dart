@@ -7,7 +7,7 @@ import 'package:bmi1/Screens/NewFood.dart';
 import 'package:bmi1/Screens/NewRecord.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'AppFire.dart';
 import 'Provider/AuthProvider.dart';
 import 'Screens/SplachScreen.dart';
@@ -26,6 +26,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+        BoxConstraints(
+          maxWidth: 360,
+          maxHeight: 690,
+        ),
+        designSize: Size(360, 690),
+        orientation: Orientation.portrait);
     return MaterialApp(
       navigatorKey: AppRouter.appRouter.navkey,
       debugShowCheckedModeBanner: false,

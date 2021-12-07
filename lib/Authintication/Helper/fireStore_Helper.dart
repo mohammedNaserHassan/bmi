@@ -8,8 +8,8 @@ class fireStore_Helper {
   static fireStore_Helper helper = fireStore_Helper._();
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-////Add User and Get it
-  addUserToFireBase(RegisterRequest registerRequest) async {
+////Add User on Firebase
+  addUserToFireBase(UserModel registerRequest) async {
     try {
       await firebaseFirestore
           .collection('Users')
@@ -17,25 +17,26 @@ class fireStore_Helper {
           .set(registerRequest.toMap());
     } on Exception catch (e) {}
   }
+////////////////////////////////////////////////////////////
 
-  Future<RegisterRequest> getUserFromFirestore() async {
+////Get User From Firebase
+  Future<UserModel> getUserFromFirestore() async {
     String userId = Auth_helper.auth_helper.getUserId();
     DocumentSnapshot documentSnapshot =
     await firebaseFirestore.collection('Users').doc(userId).get();
-print(documentSnapshot.data());
-    return RegisterRequest.fromMap(documentSnapshot.data());
+
+    return UserModel.fromMap(documentSnapshot.data());
   }
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////Update Profile
 
-  updateProfile(RegisterRequest userModel) async {
-    await firebaseFirestore
-        .collection('Users')
+  updateProfile(UserModel userModel)async{
+    await firebaseFirestore.collection('Users')
         .doc(userModel.id)
         .update(userModel.toMap());
   }
-////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////
 
 }

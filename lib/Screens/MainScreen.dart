@@ -8,6 +8,8 @@ import 'package:bmi1/Widgets/Buttons/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'NewFood.dart';
 
 class MainScreen extends StatefulWidget {
@@ -26,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
         decoration: BoxDecoration(
             border: Border.all(
           color: Colors.blue,
-          width: 5,
+          width: 5.w,
         )),
         child: Scaffold(
           appBar: AppBar(
@@ -36,132 +38,140 @@ class _MainScreenState extends State<MainScreen> {
             centerTitle: true,
           ),
           body: Consumer<AuthProvider>(
-            builder: (context, provider, v) => provider.user==null?Center(
-              child: CircularProgressIndicator(),
-            ):SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Center(
-                    child: Text(
-                      'Hi,' + '' + provider.user.name??'',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 30),
-                    child: Text(
-                      'Current Status',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    height: 50,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                        child: Text(
-                      'Normal (still Good)',
-                      style: TextStyle(color: Colors.grey),
-                    )),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 30, top: 20, bottom: 10),
-                    child: Text(
-                      'Old Status',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 25, right: 25, top: 20),
-                    height: 330,
-                    margin: EdgeInsets.symmetric(horizontal: 30),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          CustomRow(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          CustomRow(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          CustomRow(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          CustomRow(),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 25),
-                    child: Row(
+            builder: (context, provider, v) => provider.user == null
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomClick(
-                          label: 'Add Food',
-                          function: (){
-                            AppRouter.appRouter.gotoPage(NewFood.routeName);
-                          },
+                        SizedBox(
+                          height: 15.h,
                         ),
-                        CustomClick(
-                          function: (){
-                            AppRouter.appRouter.gotoPage(NewRecord.routeName);
-                          },
-                          label: 'Add Record',
+                        Center(
+                          child: Text(
+                            'Hi,' + '' + provider.user.name ?? '',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30.sp),
+                          ),
                         ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 30.w),
+                          child: Text(
+                            'Current Status',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.sp),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 10.h, horizontal: 20.w),
+                          height: 50.h,
+                          width: 380.w,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Normal (still Good)',
+                            style: TextStyle(color: Colors.grey),
+                          )),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: 30.w, top: 20.h, bottom: 10.h),
+                          child: Text(
+                            'Old Status',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.sp),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                              left: 25.w, right: 25.w, top: 20.h),
+                          height: 330,
+                          margin: EdgeInsets.symmetric(horizontal: 30.w),
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: provider.myRecords == null
+                              ? Center(
+                                  child: LinearProgressIndicator(),
+                                )
+                              : SingleChildScrollView(
+                                  child: SizedBox(
+                                  height: 320.h,
+                                  child: ListView.builder(
+                                    itemCount: provider.myRecords.length,
+                                    itemBuilder: (context, index) => CustomRow(
+                                      weight: provider.myRecords[index].weight,
+                                      length: provider.myRecords[index].length,
+                                      dateOfBirth: provider.myRecords[index].date,
+                                      gender:provider.user.gender,
+                                      birthday:provider.user.dateOfBirth
+                                    ),
+                                  ),
+                                )),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 25.h),
+                          child: Row(
+                            children: [
+                              CustomClick(
+                                label: 'Add Food',
+                                function: () {
+                                  AppRouter.appRouter
+                                      .gotoPage(NewFood.routeName);
+                                },
+                              ),
+                              CustomClick(
+                                function: () {
+                                  AppRouter.appRouter
+                                      .gotoPage(NewRecord.routeName);
+                                },
+                                label: 'Add Record',
+                              ),
+                            ],
+                          ),
+                        ),
+                        MyButton(
+                          function: () {
+                            provider.getFoods();
+                            provider.updateFoodsAfterDelete();
+                            AppRouter.appRouter
+                                .gotoPagewithReplacment(FoodList.routeName);
+                          },
+                          label: 'View Food',
+                          margin: 15,
+                        ),
+                        Center(
+                            child: TextButton(
+                                onPressed: () {
+                                  provider.logOut();
+                                },
+                                child: Text(
+                                  'Logout',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ))),
                       ],
                     ),
                   ),
-                  MyButton(
-                    function: (){
-                      provider.getFoods();
-                      AppRouter.appRouter.gotoPage(FoodList.routeName);
-                    },
-                    label: 'View Food',
-                    margin: 15,
-                  ),
-                  Center(
-                      child: TextButton(
-                          onPressed: () {
-                            provider.logOut();
-                          },
-                          child: Text(
-                            'Logout',
-                            style: TextStyle(
-                              color: Colors.black,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ))),
-                ],
-              ),
-            ),
           ),
         ));
   }

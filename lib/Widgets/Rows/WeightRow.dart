@@ -1,31 +1,33 @@
 import 'package:bmi1/Provider/AuthProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class WeightRow extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
-      builder:(context,provider,m)=> Row(
+      builder: (context, provider, m) => Row(
         children: [
           SizedBox(
-            width: 40,
+            width: 40.w,
           ),
           Text(
             'Weight',
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 20, color: Colors.blue),
+                fontWeight: FontWeight.bold,
+                fontSize: 20.sp,
+                color: Colors.blue),
           ),
           SizedBox(
-            width: 80,
+            width: 80.w,
           ),
           Container(
-              width: 30,
-              height: 30,
+              width: 30.w,
+              height: 30.h,
               decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   provider.decrementWeight();
                 },
                 child: Icon(
@@ -34,8 +36,8 @@ class WeightRow extends StatelessWidget {
                 ),
               )),
           Container(
-            width: 90,
-            height: 30,
+            width: 90.w,
+            height: 30.h,
             decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
             child: TextField(
               controller: provider.weight,
@@ -48,11 +50,11 @@ class WeightRow extends StatelessWidget {
             ),
           ),
           Container(
-              width: 30,
-              height: 30,
+              width: 30.w,
+              height: 30.h,
               decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   provider.incrementWeight();
                 },
                 child: Icon(
@@ -61,7 +63,7 @@ class WeightRow extends StatelessWidget {
                 ),
               )),
           SizedBox(
-            width: 5,
+            width: 5.w,
           ),
           Text(
             'kg',

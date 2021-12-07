@@ -6,6 +6,7 @@ import 'package:bmi1/Widgets/Text/MainText.dart';
 import 'package:bmi1/Widgets/Buttons/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum Gender { Male, Female }
 
@@ -20,7 +21,7 @@ class CompleteScreen extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(
           color: Colors.blue,
-          width: 5,
+          width: 5.w,
         )),
         child: Scaffold(
             appBar: AppBar(
@@ -35,7 +36,7 @@ class CompleteScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 100,
+                        height: 100.h,
                       ),
                       MainText(
                         txt: 'Complete Your',
@@ -44,27 +45,27 @@ class CompleteScreen extends StatelessWidget {
                         txt: 'Information',
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
                       Row(
                         children: [
                           SizedBox(
-                            width: 35,
+                            width: 35.w,
                           ),
                           Text(
                             'Gender',
                             style: TextStyle(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                                fontSize: 20.sp),
                           ),
                           SizedBox(
-                            width: 80,
+                            width: 80.w,
                           ),
                           Row(
                             children: [
                               Container(
-                                width: 30,
+                                width: 30.w,
                                 child: Radio(
                                   value: Gender.Male,
                                   groupValue: provider.gender,
@@ -79,12 +80,12 @@ class CompleteScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 40.w,
                           ),
                           Row(
                             children: [
                               Container(
-                                width: 30,
+                                width: 30.w,
                                 child: Radio(
                                   value: Gender.Female,
                                   groupValue: provider.gender,
@@ -101,19 +102,23 @@ class CompleteScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
                       WeightRow(),
                       SizedBox(
-                        height: 30,
+                        height: 30.h,
                       ),
                       LengthRow(),
                       SizedBox(
-                        height: 30,
+                        height: 30.h,
                       ),
-                      DateTimeWidget(label: 'Date Of Birth',textEditingController: provider.dateBirth,),
+                      DateTimeWidget(
+                        inputType: TextInputType.datetime,
+                        label: 'Date Of Birth',
+                        textEditingController: provider.dateBirth,
+                      ),
                       SizedBox(
-                        height: 70,
+                        height: 70.h,
                       ),
                       MyButton(
                         function: () {

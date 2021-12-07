@@ -7,9 +7,11 @@ import 'package:bmi1/Widgets/Text/SubText.dart';
 import 'package:bmi1/Widgets/TextFields/MyTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatelessWidget {
-  static final routeName='login';
+  static final routeName = 'login';
+
   const LoginScreen();
 
   @override
@@ -18,7 +20,7 @@ class LoginScreen extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(
         color: Colors.blue,
-        width: 5,
+        width: 5.w,
       )),
       child: Scaffold(
         appBar: AppBar(
@@ -28,26 +30,30 @@ class LoginScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: Consumer<AuthProvider>(
-          builder: (context,provider,index)=>SingleChildScrollView(
+          builder: (context, provider, index) => SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
-                  height: 100,
+                  height: 100.h,
                 ),
-               MainText(txt: 'Welcome Back',),
-                SizedBox(
-                  height: 10,
+                MainText(
+                  txt: 'Welcome Back',
                 ),
-                SubText(txt: 'If you already have an account,log in',),
                 SizedBox(
-                  height: 50,
+                  height: 10.h,
+                ),
+                SubText(
+                  txt: 'If you already have an account,log in',
+                ),
+                SizedBox(
+                  height: 50.h,
                 ),
                 MyTextField(
                   textEditingController: provider.email,
                   label: 'Username',
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 MyTextField(
                   textEditingController: provider.password,
@@ -55,11 +61,11 @@ class LoginScreen extends StatelessWidget {
                   obscure: true,
                 ),
                 SizedBox(
-                  height: 60,
+                  height: 60.h,
                 ),
                 MyButton(
                   label: 'LOG IN',
-                  function: (){
+                  function: () {
                     provider.login();
                   },
                 ),
@@ -68,7 +74,8 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text(
                       'You Don\'t Have An Account?',
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 13.sp, fontWeight: FontWeight.bold),
                     ),
                     TextButton(
                         onPressed: () {
@@ -76,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                         },
                         child: Text(
                           'Sign Up',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18.sp),
                         ))
                   ],
                 )

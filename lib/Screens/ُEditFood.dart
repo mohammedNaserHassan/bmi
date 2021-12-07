@@ -1,4 +1,6 @@
 import 'package:bmi1/Provider/AuthProvider.dart';
+import 'package:bmi1/Screens/FoodList.dart';
+import 'package:bmi1/Services/Router.dart';
 import 'package:bmi1/Widgets/Buttons/CustomClick.dart';
 import 'package:bmi1/Widgets/Rows/DateTimeWidget.dart';
 import 'package:bmi1/Widgets/Text/MainText.dart';
@@ -8,8 +10,8 @@ import 'package:provider/provider.dart';
 
 class EditFoof extends StatelessWidget {
   static final routeName = 'EditFoof';
-
-  EditFoof();
+int number;
+  EditFoof({this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,14 @@ class EditFoof extends StatelessWidget {
                     )),
                 child: Scaffold(
                     appBar: AppBar(
+                      leading: IconButton(
+                        onPressed: (){
+                          AppRouter.appRouter.gotoPagewithReplacment(FoodList.routeName);
+                          provider.updatedFile=null;
+                          provider.getFoods();
+                        },
+                          icon: Icon(Icons.arrow_back,color: Colors.white,
+                          )),
                       backgroundColor: Colors.blue,
                       elevation: 0,
                       title: Text('BMI Analyzer'),
@@ -65,7 +75,7 @@ class EditFoof extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     border: Border.all(color: Colors.blue)),
                                 child: MyDropDown(
-                                  hint: '',),
+                                  hint: provider.valueDrop,),
                               ),
                               Container(
                                 width: 20,
@@ -102,7 +112,7 @@ class EditFoof extends StatelessWidget {
                                     style: TextStyle(color: Colors.blue),
                                     keyboardType: TextInputType.number,
                                     decoration:
-                                    InputDecoration(border: InputBorder.none),
+                                    InputDecoration(border: InputBorder.none,),
                                   )),
                               Text('\t cal\t/g')
                             ],
@@ -125,9 +135,9 @@ class EditFoof extends StatelessWidget {
                           height: 250,
                           decoration:
                           BoxDecoration(border: Border.all(color: Colors.blue)),
-                          child:
-                          CircleAvatar(
-                              radius: 80,)
+                          child:provider.updatedFile==null?
+                              Image.network(provider.transferImage,fit: BoxFit.cover,):
+                          Image.file(provider.updatedFile,fit: BoxFit.cover,)
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 20, top: 20),
@@ -137,13 +147,15 @@ class EditFoof extends StatelessWidget {
                                 width: 145,
                                 label: 'Upload Photo',
                                 function: () {
-                                 // provider.captureUpdateFoodImage();
+                                  provider.captureUpdateFoodImage();
                                 },
                               ),
                               CustomClick(
                                 width: 100,
                                 function: () {
-                                //  provider.updateFood();
+                                provider.editFood(number);
+                                AppRouter.appRouter.gotoPagewithReplacment(FoodList.routeName);
+                                provider.updatedFile=null;
                                 },
                                 label: 'Save',
                               ),

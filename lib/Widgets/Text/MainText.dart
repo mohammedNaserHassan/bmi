@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MainText extends StatelessWidget {
   String txt;
   MainText({this.txt});
@@ -9,7 +10,7 @@ class MainText extends StatelessWidget {
       txt,
       style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 35,
+          fontSize: 35.sp,
           color: Colors.blue),
     );
   }

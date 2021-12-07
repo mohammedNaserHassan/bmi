@@ -9,16 +9,12 @@ class Auth_helper {
 
 
 
-
+//////Register User
   Future<UserCredential> signup(String email, String password) async {
     try {
       UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
-    //  print(userCredential.user.uid);
       return userCredential;
-
-//same the id but large digits and has a expire time and it is more secure
-      print(userCredential.user.getIdToken());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         CustomDialog.customDialog
@@ -31,7 +27,9 @@ class Auth_helper {
       print(e);
     }
   }
+////////////////////////////////////////////////////
 
+  //////Login User
   Future<UserCredential> signin(String email,String password) async {
     try {
       UserCredential userCredential = await firebaseAuth
@@ -47,39 +45,27 @@ class Auth_helper {
       }
     }
   }
+////////////////////////////////////////////////////////////
 
-  resetPassword(String email) async {
-    await firebaseAuth.sendPasswordResetEmail(email: email);
-    CustomDialog.customDialog.showCustom(
-        'We have sent email for reset password, please check your email');
-  }
-
-  vereifyEmail() async {
-    if (firebaseAuth.currentUser != null &&
-        !firebaseAuth.currentUser.emailVerified) {
-      await firebaseAuth.currentUser.sendEmailVerification();
-    }
-    CustomDialog.customDialog.showCustom('verification success.');
-  }
-
+  ////////Log out User
   signOut() async {
     await firebaseAuth.signOut();
   }
+////////////////////////////////////////////////////////////
 
-
+  ////Get Current User
   Future<User> getCurrentUser() async {
     try {
       var currentuser = firebaseAuth.currentUser;
       if (currentuser != null){
-
         print(currentuser);
         return firebaseAuth.currentUser;}
     } on Exception catch (e) {
-      // TODO
     }
   }
+  ////////////////////////////////////////////////////////////
 
-
+////////Get Id of User
   String getUserId(){
    try {
      return  firebaseAuth.currentUser.uid;
@@ -87,6 +73,9 @@ class Auth_helper {
      // TODO
    }
   }
+  ////////////////////////////////////////////////////////////////////////////////
+
+  ////Check user if found or not
   bool checkUser(){
     if(firebaseAuth.currentUser==null){
       return false;
@@ -96,3 +85,4 @@ class Auth_helper {
     }
   }
 }
+////////////////////////////////////////////////////////////////////////////////
