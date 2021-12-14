@@ -4,70 +4,80 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class WeightRow extends StatelessWidget {
+  double sizebox,width;
+  String title,unit;
+  bool found;
+  WeightRow({this.sizebox=30,this.title="Weight",this.found=true,this.unit='kg',this.width=110});
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
       builder: (context, provider, m) => Row(
         children: [
           SizedBox(
-            width: 40.w,
+            width: sizebox,
           ),
           Text(
-            'Weight',
+            title,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.sp,
-                color: Colors.blue),
+                color: Color(0xff0B85D8)),
           ),
           SizedBox(
-            width: 80.w,
+            width: 83.w,
+          ),
+          Visibility(
+            visible: found,
+            child: Container(
+                width: 25.w,
+                height: 25.h,
+                decoration: BoxDecoration(border: Border.all(color: Color(0xff0B85D8))),
+                child: InkWell(
+                  onTap: () {
+                    provider.decrementWeight();
+                  },
+                  child: Icon(
+                    Icons.remove,
+                    color: Color(0xff0B85D8),
+                  ),
+                )),
           ),
           Container(
-              width: 30.w,
-              height: 30.h,
-              decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
-              child: InkWell(
-                onTap: () {
-                  provider.decrementWeight();
-                },
-                child: Icon(
-                  Icons.remove,
-                  color: Colors.blue,
-                ),
-              )),
-          Container(
-            width: 90.w,
-            height: 30.h,
-            decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
+            width: width,
+            height: 25.h,
+            decoration: BoxDecoration(border: Border.all(color: Color(0xff0B85D8))),
             child: TextField(
               controller: provider.weight,
-              style: TextStyle(color: Colors.blue),
+              style: TextStyle(color: Color(0xff0B85D8)),
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hoverColor: Colors.blue,
+                hoverColor: Color(0xff0B85D8),
               ),
             ),
           ),
-          Container(
-              width: 30.w,
-              height: 30.h,
-              decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
-              child: InkWell(
-                onTap: () {
-                  provider.incrementWeight();
-                },
-                child: Icon(
-                  Icons.add,
-                  color: Colors.blue,
-                ),
-              )),
+          Visibility(
+            visible: found,
+            child: Container(
+                width: 25.w,
+                height: 25.h,
+                decoration: BoxDecoration(border: Border.all(color: Color(0xff0B85D8))),
+                child: InkWell(
+                  onTap: () {
+                    provider.incrementWeight();
+                  },
+                  child: Icon(
+                    Icons.add,
+                    color:Color(0xff0B85D8),
+                  ),
+                )),
+          ),
           SizedBox(
             width: 5.w,
           ),
           Text(
-            'kg',
-            style: TextStyle(color: Colors.blue),
+            unit,
+            style: TextStyle(color: Color(0xff0B85D8)),
           )
         ],
       ),

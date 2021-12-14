@@ -22,12 +22,12 @@ class NewRecord extends StatelessWidget {
       builder: (context, provider, v) => Container(
           decoration: BoxDecoration(
               border: Border.all(
-            color: Colors.blue,
+            color: Color(0xff0B85D8),
             width: 5.w,
           )),
           child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.blue,
+              backgroundColor: Color(0xff0B85D8),
               elevation: 0,
               title: Text('BMI Analyzer'),
               centerTitle: true,
@@ -45,18 +45,22 @@ class NewRecord extends StatelessWidget {
                   SizedBox(
                     height: 120.h,
                   ),
-                  WeightRow(),
+                  WeightRow(
+                    sizebox: 30.w,
+                  ),
                   SizedBox(
                     height: 30.h,
                   ),
-                  LengthRow(),
+                  LengthRow(
+                    sizbox: 30.w,
+                  ),
                   SizedBox(
                     height: 30.h,
                   ),
                   DateTimeWidget(
                     inputType: TextInputType.datetime,
                     label: 'Date',
-                    space: 102.w,
+                    space: 100.w,
                     textEditingController: provider.date,
                   ),
                   SizedBox(
@@ -65,7 +69,7 @@ class NewRecord extends StatelessWidget {
                   DateTimeWidget(
                     inputType: TextInputType.datetime,
                     label: 'Time',
-                    space: 100.w,
+                    space: 95.w,
                     textEditingController: provider.time,
                   ),
                   SizedBox(
@@ -76,10 +80,10 @@ class NewRecord extends StatelessWidget {
                       child: MyButton(
                         label: 'Save Data',
                         function: () {
-                          if (provider.length.text != null &&
-                              provider.weight.text != null &&
-                              provider.date.text != null &&
-                              provider.time.text != null) {
+                          if (provider.length.text.length != 0 &&
+                              provider.weight.text.length != 0 &&
+                              provider.date.text.length != 0 &&
+                              provider.time.text.length != 0) {
                             provider.addNewRecord();
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text("Successfully Added The Record"),

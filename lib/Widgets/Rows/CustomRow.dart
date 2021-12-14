@@ -5,30 +5,16 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomRow extends StatefulWidget {
-  String dateOfBirth,birthday;
-  String weight, length,gender;
+  String date;
+  String weight, length,state;
 
-  CustomRow({this.length, this.weight, this.dateOfBirth,this.gender,this.birthday});
+  CustomRow({this.length, this.weight, this.date,this.state});
 
   @override
   State<CustomRow> createState() => _CustomRowState();
 }
 
 class _CustomRowState extends State<CustomRow> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<AuthProvider>(context,listen: false).getAgePercent(
-      gender: widget.gender,
-      age: widget.birthday
-    );
-    Provider.of<AuthProvider>(context,listen: false).getBMI(
-      weight: double.parse(widget.weight),
-      length: double.parse(widget.length),
-      ageParcent: Provider.of<AuthProvider>(context,listen: false).agePercent,
-    );
-
-  }
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
@@ -37,7 +23,7 @@ class _CustomRowState extends State<CustomRow> {
           Row(
             children: [
               CustomField(
-                txt: widget.dateOfBirth,
+                txt: widget.date,
                 topleft: 10,
                 bottomleft: 0,
                 bottomright: 0,
@@ -61,7 +47,7 @@ class _CustomRowState extends State<CustomRow> {
           Row(
             children: [
               CustomField(
-                txt: provider.setBMI(bmi: provider.bmi),
+                txt: widget.state,
                 bottomleft: 10,
                 bottomright: 0,
                 topleft: 0,

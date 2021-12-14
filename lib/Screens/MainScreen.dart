@@ -1,5 +1,6 @@
 import 'package:bmi1/Provider/AuthProvider.dart';
 import 'package:bmi1/Screens/FoodList.dart';
+import 'package:bmi1/Screens/NewMeal.dart';
 import 'package:bmi1/Screens/NewRecord.dart';
 import 'package:bmi1/Services/Router.dart';
 import 'package:bmi1/Widgets/Buttons/CustomClick.dart';
@@ -27,12 +28,12 @@ class _MainScreenState extends State<MainScreen> {
     return Container(
         decoration: BoxDecoration(
             border: Border.all(
-          color: Colors.blue,
+          color: Color(0xff0B85D8),
           width: 5.w,
         )),
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blue,
+            backgroundColor: Color(0xff0B85D8),
             elevation: 0,
             title: Text('BMI Analyzer'),
             centerTitle: true,
@@ -67,23 +68,22 @@ class _MainScreenState extends State<MainScreen> {
                           child: Text(
                             'Current Status',
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: Color(0xff0B85D8),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.sp),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(
-                              vertical: 10.h, horizontal: 20.w),
+                              vertical: 10.h, horizontal: 30.w),
                           height: 50.h,
-                          width: 380.w,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.blue),
-                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Color(0xff0B85D8)),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           child: Center(
                               child: Text(
-                            'Normal (still Good)',
+                            provider.lastStatus+'('+provider.differenceBI+')' ,
                             style: TextStyle(color: Colors.grey),
                           )),
                         ),
@@ -93,7 +93,7 @@ class _MainScreenState extends State<MainScreen> {
                           child: Text(
                             'Old Status',
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: Color(0xff0B85D8),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.sp),
                           ),
@@ -101,10 +101,10 @@ class _MainScreenState extends State<MainScreen> {
                         Container(
                           padding: EdgeInsets.only(
                               left: 25.w, right: 25.w, top: 20.h),
-                          height: 330,
+                          height: 350,
                           margin: EdgeInsets.symmetric(horizontal: 30.w),
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Color(0xff0B85D8),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: provider.myRecords == null
@@ -117,12 +117,18 @@ class _MainScreenState extends State<MainScreen> {
                                   child: ListView.builder(
                                     itemCount: provider.myRecords.length,
                                     itemBuilder: (context, index) => CustomRow(
-                                      weight: provider.myRecords[index].weight,
-                                      length: provider.myRecords[index].length,
-                                      dateOfBirth: provider.myRecords[index].date,
-                                      gender:provider.user.gender,
-                                      birthday:provider.user.dateOfBirth
-                                    ),
+                                        weight: provider.myRecords[index].weight,
+                                        length: provider.myRecords[index].length,
+                                        date: provider.myRecords[index].date,
+                                        state: provider.setBMI(bmi: provider.getBMI(
+                                         weight: double.parse(provider.myRecords[index].weight),
+                                         ageParcent: provider.getAgePercent(
+                                          gender: provider.user.gender,
+                                         age: provider.user.dateOfBirth
+                                         ),
+                                         length: double.parse(provider.myRecords[index].length)
+                                        )
+                                        ),),
                                   ),
                                 )),
                         ),
@@ -147,10 +153,19 @@ class _MainScreenState extends State<MainScreen> {
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Center(
+                          child: CustomClick(
+                            label: 'Add Meal',
+                            function: () {
+                              AppRouter.appRouter.gotoPagewithReplacment(NewMeal.routeName);
+                            },
+                          ),
+                        ),
                         MyButton(
                           function: () {
-                            provider.getFoods();
-                            provider.updateFoodsAfterDelete();
                             AppRouter.appRouter
                                 .gotoPagewithReplacment(FoodList.routeName);
                           },

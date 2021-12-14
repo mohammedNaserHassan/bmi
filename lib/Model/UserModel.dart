@@ -4,6 +4,7 @@ class UserModel{
   String name,email,id;
   Map<String,dynamic> foods;
   Map<String,dynamic> states;
+  Map<String,dynamic> meals;
   String gender,dateOfBirth;
 
   UserModel(
@@ -14,6 +15,7 @@ class UserModel{
         this.dateOfBirth,
         this.foods,
         this.states,
+        this.meals
       });
 
   toMap(){
@@ -24,7 +26,8 @@ class UserModel{
       'gender': this.gender,
       'dateOfBirth': this.dateOfBirth,
       'states':this.states,
-      'foods':this.foods
+      'foods':this.foods,
+      'meals':this.meals,
     };
   }
   factory UserModel.fromMap(Map<String, dynamic> map) {
@@ -36,6 +39,7 @@ class UserModel{
         dateOfBirth : map['dateOfBirth'],
         foods:map['foods'],
         states:map['states'],
+        meals:map['meals'],
     );
   }
 }

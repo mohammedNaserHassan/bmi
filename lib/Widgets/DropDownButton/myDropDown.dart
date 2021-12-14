@@ -5,18 +5,22 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MyDropDown extends StatelessWidget {
   String hint;
-   MyDropDown({this.hint,});
+   MyDropDown({this.hint="",});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
       builder: (context,provider,m)=>DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
-          iconEnabledColor: Colors.blue,
+          iconEnabledColor: Color(0xff0B85D8),
           underline: Container(
             color: Colors.white,
           ),
-          icon: Visibility(visible: false,child: Icon(Icons.arrow_drop_down_outlined,size: 33.sp,)),
+          icon: Container(
+              decoration: BoxDecoration(
+                border: Border(left: BorderSide(color: Color(0xff0B85D8),))
+              ),
+              child: Center(child: Icon(Icons.arrow_drop_down_outlined,size: 33.sp,))),
           isExpanded: true,
           hint: Text(hint),
           value: provider.valueDrop,
@@ -40,10 +44,6 @@ class MyDropDown extends StatelessWidget {
             DropdownMenuItem(
               child: Text('Fish'),
               value: 'Fish',
-            ),
-            DropdownMenuItem(
-              child: Text('Burger'),
-              value: 'Burger',
             ),
             DropdownMenuItem(
               child: Text('Sweets'),

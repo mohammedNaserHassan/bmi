@@ -1,4 +1,4 @@
-import 'package:bmi1/Model/RegisterRequest.dart';
+import 'package:bmi1/Model/UserModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'auth_helper.dart';
 

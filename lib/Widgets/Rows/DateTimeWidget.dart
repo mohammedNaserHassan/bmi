@@ -24,18 +24,18 @@ class DateTimeWidget extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-              color: Colors.blue, fontSize: 20.sp, fontWeight: FontWeight.bold),
+              color: Color(0xff0B85D8), fontSize: 20.sp, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           width: space,
         ),
         Container(
-            width: 170.w,
-            height: 35.h,
-            decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
+            width: 160.w,
+            height: 30.h,
+            decoration: BoxDecoration(border: Border.all(color: Color(0xff0B85D8))),
             child: TextField(
               controller: textEditingController,
-              style: TextStyle(color: Colors.blue),
+              style: TextStyle(color: Color(0xff0B85D8)),
               keyboardType: inputType,
               decoration:
                   InputDecoration(border: InputBorder.none, hintText: hint),

@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'Buttons/CustomClick.dart';
 
 class FoodWidget extends StatelessWidget {
-  String image, name, category, calory;
+  String image, name, category,calory;
   int number;
 
   FoodWidget({this.image, this.category, this.name, this.calory, this.number});
@@ -16,8 +16,8 @@ class FoodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
+      height: 80.h,
+      decoration: BoxDecoration(border: Border.all(color: Color(0xff0B85D8))),
       margin: EdgeInsets.symmetric(
         vertical: 20.h,
       ),
@@ -34,7 +34,7 @@ class FoodWidget extends StatelessWidget {
               ),
             ),
             VerticalDivider(
-              color: Colors.blue,
+              color: Color(0xff0B85D8),
               width: 1.w,
             ),
             Column(
@@ -87,7 +87,7 @@ class FoodWidget extends StatelessWidget {
                             fontSize: 15.sp),
                       )),
                       decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Color(0xff0B85D8),
                           borderRadius: BorderRadius.circular(5)),
                       height: 28.h,
                       width: 69.w,
@@ -102,7 +102,7 @@ class FoodWidget extends StatelessWidget {
                     width: 28.0.w,
                     height: 26.0.h,
                     decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xff0B85D8),
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(10),
                             topLeft: Radius.circular(10))),

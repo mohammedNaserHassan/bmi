@@ -2,8 +2,9 @@ import 'package:bmi1/Provider/AuthProvider.dart';
 import 'package:bmi1/Services/Router.dart';
 import 'package:bmi1/Widgets/Buttons/CustomClick.dart';
 import 'package:bmi1/Widgets/Rows/DateTimeWidget.dart';
+import 'package:bmi1/Widgets/DropDownButton/dropRow.dart';
 import 'package:bmi1/Widgets/Text/MainText.dart';
-import 'package:bmi1/Widgets/myDropDown.dart';
+import 'package:bmi1/Widgets/DropDownButton/smallDrop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,12 +20,12 @@ class NewFood extends StatelessWidget {
         builder: (context, provider, v) => Container(
             decoration: BoxDecoration(
                 border: Border.all(
-              color: Colors.blue,
+              color: Color(0xff0B85D8),
               width: 5.w,
             )),
             child: Scaffold(
                 appBar: AppBar(
-                  backgroundColor: Colors.blue,
+                  backgroundColor:Color(0xff0B85D8),
                   elevation: 0,
                   title: Text('BMI Analyzer'),
                   centerTitle: true,
@@ -47,39 +48,10 @@ class NewFood extends StatelessWidget {
                       space: 70.w,
                       inputType: TextInputType.name,
                     ),
-                    Container(
-                        margin: EdgeInsets.only(left: 30.w, top: 30.h),
-                        child: Row(children: [
-                          Text(
-                            'Category',
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 45.w,
-                          ),
-                          Container(
-                            width: 140.w,
-                            height: 35.h,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.blue)),
-                            child: MyDropDown(
-                              hint: 'Select Category',
-                            ),
-                          ),
-                          Container(
-                            width: 20.w,
-                            height: 35.h,
-                            child: Icon(
-                              Icons.arrow_drop_down_outlined,
-                              color: Colors.blue,
-                            ),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.blue)),
-                          )
-                        ])),
+                   SizedBox(height: 20,),
+                   dropRow(
+                     title: 'Category',
+                   ),
                     Container(
                       margin: EdgeInsets.only(left: 30.w, top: 30.h),
                       child: Row(
@@ -87,7 +59,7 @@ class NewFood extends StatelessWidget {
                           Text(
                             'Calory',
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: Color(0xff0B85D8),
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -95,46 +67,46 @@ class NewFood extends StatelessWidget {
                             width: 70.h,
                           ),
                           Container(
-                              width: 100.w,
-                              height: 35.h,
+                              width: 50.w,
+                              height: 30.h,
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.blue)),
+                                  border: Border.all(color: Color(0xff0B85D8))),
                               child: TextField(
                                 controller: provider.caloryFoods,
-                                style: TextStyle(color: Colors.blue),
+                                style: TextStyle(color: Color(0xff0B85D8)),
                                 keyboardType: TextInputType.number,
                                 decoration:
                                     InputDecoration(border: InputBorder.none),
                               )),
-                          Text('\t cal\t/g')
+                          SizedBox(width: 10,),
+                          Container(
+                              width: 85.w,
+                              height: 30.h,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Color(0xff0B85D8))),
+                              child: smallDrop())
                         ],
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 250.w, top: 20.h),
+                      margin: EdgeInsets.only(right: 264.w, top: 20.h),
                       child: Text(
                         'Photo',
                         style: TextStyle(
-                            color: Colors.blue,
+                            color: Color(0xff0B85D8),
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
                       margin:
-                          EdgeInsets.only(top: 10.h, bottom: 5.h, right: 60.w),
-                      width: 260.w,
+                          EdgeInsets.only(top: 10.h, bottom: 5.h, right: 40.w),
+                      width: 280.w,
                       height: 250.h,
                       decoration:
-                          BoxDecoration(border: Border.all(color: Colors.blue)),
+                          BoxDecoration(border: Border.all(color: Color(0xff0B85D8))),
                       child: provider.file == null
-                          ? CircleAvatar(
-                              backgroundColor: Colors.blue,
-                              child: Icon(
-                                Icons.add_a_photo_outlined,
-                                size: 35.sp,
-                              ),
-                            )
+                          ? Center(child: Text('No Picture found.. please select photo '))
                           : Image.file(provider.file, fit: BoxFit.cover),
                     ),
                     Container(
@@ -151,8 +123,8 @@ class NewFood extends StatelessWidget {
                           CustomClick(
                             width: 100.w,
                             function: () {
-                              if (provider.caloryFoods.text != null &&
-                                  provider.nameFoods.text != null) {
+                              if (provider.caloryFoods.text.length != 0 &&
+                                  provider.nameFoods.text.length != 0) {
                                 provider.addNewFood();
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(

@@ -20,12 +20,12 @@ class CompleteScreen extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             border: Border.all(
-          color: Colors.blue,
+          color: Color(0xff0B85D8),
           width: 5.w,
         )),
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.blue,
+              backgroundColor: Color(0xff0B85D8),
               elevation: 0,
               title: Text('BMI Analyzer'),
               centerTitle: true,
@@ -50,17 +50,17 @@ class CompleteScreen extends StatelessWidget {
                       Row(
                         children: [
                           SizedBox(
-                            width: 35.w,
+                            width: 30.w,
                           ),
                           Text(
                             'Gender',
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: Color(0xff0B85D8),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.sp),
                           ),
                           SizedBox(
-                            width: 80.w,
+                            width: 67.w,
                           ),
                           Row(
                             children: [
@@ -80,7 +80,7 @@ class CompleteScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            width: 40.w,
+                            width: 50.w,
                           ),
                           Row(
                             children: [
@@ -108,24 +108,27 @@ class CompleteScreen extends StatelessWidget {
                       SizedBox(
                         height: 30.h,
                       ),
-                      LengthRow(),
+                      LengthRow(
+                        sizbox: 30.w,
+                      ),
                       SizedBox(
                         height: 30.h,
                       ),
                       DateTimeWidget(
+                        space: 23,
                         inputType: TextInputType.datetime,
                         label: 'Date Of Birth',
                         textEditingController: provider.dateBirth,
                       ),
                       SizedBox(
-                        height: 70.h,
+                        height: 100.h,
                       ),
                       MyButton(
-                        function: () {
-                          provider.completeRegistration();
-                        },
+                        function:
+                          provider.completeRegistration
+                        ,
                         label: 'Save Data',
-                      )
+                      ),
                     ]),
               ),
             )));

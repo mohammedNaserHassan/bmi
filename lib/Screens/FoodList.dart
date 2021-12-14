@@ -17,7 +17,7 @@ class FoodList extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             border: Border.all(
-          color: Colors.blue,
+          color: Color(0xff0B85D8),
           width: 5,
         )),
         child: Consumer<AuthProvider>(
@@ -28,12 +28,13 @@ class FoodList extends StatelessWidget {
                           provider.updateFoodsAfterDelete();
                           AppRouter.appRouter
                               .gotoPagewithReplacment(MainScreen.routeName);
+                          provider.getFoods();
                         },
                         icon: Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                         )),
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xff0B85D8),
                     elevation: 0,
                     title: Text('BMI Analyzer'),
                     centerTitle: true,
@@ -65,7 +66,7 @@ class FoodList extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           color: Colors.white,
-                                          backgroundColor: Colors.blue,
+                                          backgroundColor: Color(0xff0B85D8),
                                           fontSize: 25.sp),
                                     ),
                                   )

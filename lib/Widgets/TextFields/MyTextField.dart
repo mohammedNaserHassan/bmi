@@ -26,7 +26,7 @@ class MyTextField extends StatelessWidget {
           keyboardType: textInputType,
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue),
+                borderSide: BorderSide(color: Color(0xff0B85D8)),
               ),
               hintText: label,
               suffixIcon: obscure

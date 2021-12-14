@@ -11,7 +11,7 @@ class MainText extends StatelessWidget {
       style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 35.sp,
-          color: Colors.blue),
+          color: Color(0xff0B85D8)),
     );
   }
 }

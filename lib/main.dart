@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'AppFire.dart';
 import 'Provider/AuthProvider.dart';
+import 'Screens/NewMeal.dart';
 import 'Screens/SplachScreen.dart';
 import 'Screens/ُEditFood.dart';
 import 'Services/Router.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         NewFood.routeName: (_) => NewFood(),
         EditFoof.routeName: (_) => EditFoof(),
         FoodList.routeName: (_) => FoodList(),
+        NewMeal.routeName: (_) => NewMeal(),
       },
       home: App(),
     );

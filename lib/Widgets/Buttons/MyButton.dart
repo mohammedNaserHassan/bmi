@@ -19,7 +19,7 @@ class MyButton extends StatelessWidget {
                   fontSize: 20),
             )),
         decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color(0xff0B85D8),
             borderRadius: BorderRadius.circular(10)
         ),
         height: 50,

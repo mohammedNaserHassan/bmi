@@ -19,12 +19,12 @@ class RegisterScreen extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(
-        color: Colors.blue,
+        color: Color(0xff0B85D8),
         width: 5.w,
       )),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xff0B85D8),
           elevation: 0,
           title: Text('BMI Analyzer'),
           centerTitle: true,
@@ -79,9 +79,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 MyButton(
                   label: 'CREATE',
-                  function: () {
-                    provider.register();
-                  },
+                  function: provider.register
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
